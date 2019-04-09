@@ -14,7 +14,8 @@ public class MccUtils {
 				.addAnnotatedClass(Team.class)
 				.addAnnotatedClass(Player.class);
 		
-		SessionFactory sf = configuration.buildSessionFactory(); 
+		SessionFactory sf = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+		//SessionFactory sf = configuration.buildSessionFactory(); 
 		Session session = sf.openSession(); 
 		return session;
 	}
