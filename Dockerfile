@@ -1,3 +1,3 @@
 FROM tomcat
-COPY tcmc.war /usr/local/tomcat/webapps/
+COPY target/MCC.war /usr/local/tomcat/webapps/
 EXPOSE 8080
