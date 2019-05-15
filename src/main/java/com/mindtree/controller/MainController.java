@@ -27,7 +27,7 @@ public class MainController {
 	TeamDaoImpl teamDaoObj = new TeamDaoImpl();
 	Service servObj = new ServiceImpl();
 	
-	//---------------------------------- GOING TO INDEX ----------------------------------
+	//---------------------------------- GOING TO INDEX --------------------------------------
 	@RequestMapping(value = "/index")
 	public ModelAndView indexPage()
 	{
