@@ -10,4 +10,9 @@ node {
          sh label: '', script: 'docker login -u octopent -p Stop/Watch1'
          sh label: '', script: 'docker push octopent/mcc'
     }
+    stage('PULL FROM DOCKERHUB'){
+         sh label: '', script: 'docker pull octopent/mcc'
+         sh label: '', script: 'docker run -dp 80:8080 --name mcc octopent/mcc'
+    }
+    
 }
