@@ -10,28 +10,17 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: mvn sonar:sonar -Dsonar.projectKey=dotnet-core-project -Dsonar.host.url=http://ec2-3-121-237-249.eu-central-1.compute.amazonaws.com -Dsonar.login=sonarkey
-  displayName: 'Run a one-line script'
-
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
-    goals: 'clean package'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    testRunTitle: 'Testing with JUnit'
     javaHomeOption: 'JDKVersion'
     mavenVersionOption: 'Default'
     mavenAuthenticateFeed: false
-    sonarQubeRunAnalysis: false
-
-- task: SonarQubePrepare@4
-  inputs:
-    SonarQube: 'acc-sonarqube'
-    scannerMode: 'Other'
-
-- task: SonarQubePublish@4
-  inputs:
-    pollingTimeoutSec: '300'
-
+    sonarQubeRunAnalysis: true
+    sqMavenPluginVersionChoice: 'latest'
+    checkStyleRunAnalysis: true
+    pmdRunAnalysis: true
+    findBugsRunAnalysis: true
 
