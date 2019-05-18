@@ -10,10 +10,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: mvn sonar:sonar \
-  -Dsonar.projectKey=dotnet-core-project \
-  -Dsonar.host.url=http://ec2-3-121-237-249.eu-central-1.compute.amazonaws.com \
-  -Dsonar.login=sonarkey
+- script: mvn sonar:sonar -Dsonar.projectKey=dotnet-core-project -Dsonar.host.url=http://ec2-3-121-237-249.eu-central-1.compute.amazonaws.com -Dsonar.login=sonarkey
   displayName: 'Run a one-line script'
 
 - task: Maven@3
