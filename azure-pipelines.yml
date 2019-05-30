@@ -27,11 +27,17 @@ steps:
     sonarQubeRunAnalysis: true
     sqMavenPluginVersionChoice: 'latest'
 
-- task: PublishBuildArtifacts@1
+# - task: PublishBuildArtifacts@1
+#   inputs:
+#     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+#     ArtifactName: 'mcc-artifs'
+#     publishLocation: 'Container'
+
+- task: CopyFiles@2
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'mcc-artifs'
-    publishLocation: 'Container'
+    SourceFolder: '/home/vsts/work/1/s/target/'
+    Contents: 'MCC.war'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
 - task: SonarCloudPublish@1
   inputs:
